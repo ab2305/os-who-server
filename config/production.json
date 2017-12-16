@@ -1,53 +1,53 @@
 {
-	"app": {
-		"port": 8020,
-		"host": "http://localhost:8020",
-		"passwordSalt": "saltbae",
-		"sessionSecret": "wooram",
-		"redisPass": "",
-		"redisPort": 6379,
-		"redisHost": "localhost",
-		"uploadDir": "./public/uploads"
-	},
-	"coolsms": {
-		"apiKey": "",
-		"apiSecret": "",
-		"sender": ""
-	},
-	"mail": {
-		"user": "",
-		"password": "",
-		"host": ""
-	},
-	"log": {
-		"level": "silly"
-	},
-	"fcm": {
-		"serverKey": "serverKey"
-	},
-	"billing": {
-		"stamp33": "stamp_33",
-		"stamp100": "stamp_100",
-		"stamp200": "stamp_200",
-		"stamp500": "stamp_500",
-		"stamp1000": "stamp_1000",
-		"subscription30": "subscription_30",
-		"subscription60": "subscription_60",
-		"subscription90": "subscription_90",
-		"subscription180": "subscription_180"
-	},
-	"db": {
-		"host": "localhost",
-		"port": 5432,
-		"database": "who",
-		"username": null,
-		"password": null,
-		"pool": {
-			"max": 5,
-			"min": 0,
-			"idle": 10000
-		},
-		"logging": false,
-		"dialect": "postgres"
-	}
-}
+   "app": {
+      "port": 8020,
+       "host": "http://api.nuguga.kr",
+       "passwordSalt": "chatiichatii",
+       "sessionSecret": "forgodwooram",
+       "redisPass": "godwooramzzang",
+       "redisPort": 6379,
+       "redisHost": "localhost",
+       "uploadDir": "./public/uploads"
+    },
+   "coolsms": {
+      "apiKey": "NCSKJR5XNEBHZB14",
+      "apiSecret": "QYAWXQV2EFXL1MCXGUKFGLSHK7EXIW6Q",
+      "sender": "025377939"
+    },
+    "mail": {
+      "user": "solland14@gmail.com",
+      "password": "20141001k",
+      "host": "smtp.gmail.com"
+    },
+    "log": {
+      "level": "info"
+    },
+    "fcm": {
+      "serverKey": "AAAAjUSSdJY:APA91bHXQ-u3p5psopsgMztSLe9ONVzVwCkVo9GJpJ8FMMjTjudIOqi9tx9WsaVcbZ24pYrGYXDYGKtbZUtu1pfnmc1XjTvnW5cJiCuEb0b-cLMmUmqC1dse74uwyhOFNYXP    -CjoTb_s"
+    },
+    "billing": {
+      "stamp33": "stamp_33",
+      "stamp100": "stamp_100",
+      "stamp200": "stamp_200",
+      "stamp500": "stamp_500",
+      "stamp1000": "stamp_1000",
+      "subscription30": "subscription_30",
+      "subscription60": "subscription_60",
+      "subscription90": "subscription_90",
+      "subscription180": "subscription_180"
+    },
+    "db": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "who",
+      "username": "who-api",
+      "password": "gondor",
+      "pool": {
+       "max": 5,
+       "min": 0,
+       "idle": 10000
+      },
+      "logging": false,
+      "dialect": "postgres"
+    }
+ }                              
