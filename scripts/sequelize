@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+node ./scripts/create-seq-cli-config.js
+
+export PATH=$PATH:./node_modules/.bin/
+sequelize "$@"
