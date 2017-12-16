@@ -60,11 +60,7 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 인증코드: ${invitee.code}
 
 '누굴까'는 ‘초대한 사람은 상대방을 알지만 상대방은 초대한 사람을 모르는 채 서로 대화하는 익명 채팅 메신저' 입니다.
-구글스토어 에서 '누굴까'로 검색하면 앱을 설치할 수 있습니다.
-(아이폰 사용자를 위한 iOS버전은 11월 중에 출시될 예정입니다)
-
-구글스토어 바로가기
-https://play.google.com/store/apps/details?id=com.whoclient
+http://admin.nuguga.kr/app/app
 `, 'LMS')
 		} catch (err) {
 			return next(err)
@@ -99,11 +95,7 @@ https://play.google.com/store/apps/details?id=com.whoclient
 인증코드: ${invitee.code}
 
 '누굴까'는 ‘초대한 사람은 상대방을 알지만 상대방은 초대한 사람을 모르는 채 서로 대화하는 익명 채팅 메신저' 입니다.
-구글스토어 에서 '누굴까'로 검색하면 앱을 설치할 수 있습니다.
-(아이폰 사용자를 위한 iOS버전은 11월 중에 출시될 예정입니다)
-
-구글스토어 바로가기
-https://play.google.com/store/apps/details?id=com.whoclient
+http://admin.nuguga.kr/app/app
 `, 'LMS')
 		} catch (err) {
 			return next(err)
