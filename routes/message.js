@@ -188,6 +188,7 @@ router.post('/block',  auth.needsUserLogin, async (req, res, next) => {
 	if (!chat) {
 		return res.status(404).send('not found chat with topic')
 	}
+	await chat.update(useyn : 'N')
 	return res.status(200).end()
 })
 
