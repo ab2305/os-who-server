@@ -24,9 +24,6 @@ router.post('/block',  auth.needsUserLogin, async (req, res, next) => {
 		return res.status(404).send('not found chat with topic')
 	}
 
-	await Chat.update({useyn: 'N'})
-	
-	return res.json({useyn: 'N'})
 })
 
 module.exports = router
