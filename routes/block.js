@@ -7,7 +7,7 @@ const block = require('../models').Block
 const Chat = require('../models').Chat
 
 const router = express.Router()
-
+/*
 router.post('/block',  auth.needsUserLogin, async (req, res, next) => {
 	const chat = await Chat.findOne({
 		where: {topic: req.body.topic, userId: req.user.id},
@@ -25,5 +25,5 @@ router.post('/block',  auth.needsUserLogin, async (req, res, next) => {
 	}
 
 })
-
+*/
 module.exports = router

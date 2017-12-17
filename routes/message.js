@@ -173,6 +173,25 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 	return res.status(200).end()
 })
 
+router.post('/block',  auth.needsUserLogin, async (req, res, next) => {
+	const chat = await Chat.findOne({
+		where: {topic: req.body.topic, userId: req.user.id},
+		include: [
+			{model: Message, as: 'messages'},
+			{model: Invitee, as: 'invitee', include: [
+				{model: User, as: 'friends'},
+				{model: Device, as: 'device'}
+			]}
+		]
+	})
+
+	if (!chat) {
+		return res.status(404).send('not found chat with topic')
+	}
+	return res.status(200).end()
+})
+
+
 router.get('/user/usinghistories/:id', auth.needsUserLogin, async (req, res) => {
 	const userId = parseInt(req.params.id, 10)
 	const limit = parseInt(req.query.limit, 10) || 1000
