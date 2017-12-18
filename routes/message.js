@@ -175,7 +175,7 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 
 router.post('/block',  auth.needsUserLogin, async (req, res, next) => {
 	let chat = await Chat.findOne({
-		where: {topic: req.body.topic, userId: req.user.id}
+		where: {topic: req.body.topic}
 	})
 
 	if (!chat) {
