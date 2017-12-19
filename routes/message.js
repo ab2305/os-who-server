@@ -173,9 +173,9 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 	return res.status(200).end()
 })
 
-router.get('/block/:topic',  auth.needsLogin, async (req, res) => {
+router.p('/block/:id',  auth.needsLogin, async (req, res) => {
 	const chat = await Chat.findOne({
-		where: {topic: req.params.topic}
+		where: {id: req.params.id}
 	})
 
 	if (!chat) {
