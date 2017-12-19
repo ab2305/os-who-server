@@ -174,7 +174,7 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 })
 
 router.get('/block/:topic',  auth.needsLogin, async (req, res) => {
-	let chat = await Chat.findOne({
+	const chat = await Chat.findOne({
 		where: {topic: req.params.topic}
 	})
 
@@ -182,7 +182,7 @@ router.get('/block/:topic',  auth.needsLogin, async (req, res) => {
 		return res.status(404).send('not found chat with topic')
 	}
 	await chat.update({useyn : 'N'})
-	return res.status(200).end()
+	return res.status(200).end('OK')
 })
 
 
