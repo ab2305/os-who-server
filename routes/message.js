@@ -184,7 +184,7 @@ router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 	
 	//await chat.update({useyn : 'N'})
 	try {
-		await chat.update({useyn : 'N'}, {where: {id: req.params.id}})
+		await chat.update({useyn : 'N'}, {where: {id: parseInt(req.params.id,10)}})
 	} catch (err) {
 		return next(err)
 	}
