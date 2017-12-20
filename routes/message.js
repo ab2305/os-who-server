@@ -173,6 +173,15 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 	return res.status(200).end()
 })
 
+router.post('/Report',  auth.needsUserLogin, async (req, res, next) => {
+	
+	
+	await Message.update({status : 'C'})
+	
+	return res.status(200).end('OK')
+})
+
+
 router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 	const chat = await Chat.findOne({
 		where: {id: parseInt(req.params.id, 10), useyn :'Y'}

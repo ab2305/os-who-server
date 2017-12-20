@@ -7,7 +7,8 @@ module.exports = (defineModel, defineRelationship, models) => {
 	defineModel('Message', {
 		id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
 		text: {type: Sequelize.STRING(512), allowNull: false},
-		isRead: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false}
+		isRead: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false},
+		status : {type : Sequelize.STRING(1), allowNull : false}
 	}, {
 
 		instanceMethods: {
