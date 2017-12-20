@@ -21,7 +21,7 @@ const router = express.Router()
 
 router.post('/user/message', auth.needsUserLogin, async (req, res, next) => {
 	const chat = await Chat.findOne({
-		where: {topic: req.body.topic, userId: req.user.id},
+		where: {topic: req.body.topic, userId: req.user.id, useyn :'Y'},
 		include: [
 			{model: Message, as: 'messages'},
 			{model: Invitee, as: 'invitee', include: [
@@ -130,7 +130,7 @@ router.get('/user/chats', auth.needsUserLogin, async (req, res) => {
 		order: [
 			[{model: Message, as: 'messages'}, 'id', 'DESC']
 		],
-		where: {userId: req.user.id},
+		where: {userId: req.user.id, useyn :'Y'},
 		include: [
 			{model: Message, as: 'messages'},
 			{model: Invitee, as: 'invitee', include: [
@@ -175,7 +175,7 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 
 router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 	const chat = await Chat.findOne({
-		where: {id: parseInt(req.params.id, 10)}
+		where: {id: parseInt(req.params.id, 10), useyn :'Y'}
 	})
 
 	if (!chat) {
@@ -184,7 +184,7 @@ router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 	
 	await chat.update({useyn : 'N'})
 	
-	return res.status(200).end('')
+	return res.status(200).end('OK')
 })
 
 
@@ -217,7 +217,7 @@ router.get('/user/usinghistories/:id', auth.needsUserLogin, async (req, res) => 
 
 router.post('/invitee/message', auth.needsInviteeLogin, async (req, res, next) => {
 	const chat = await Chat.findOne({
-		where: {topic: req.body.topic, inviteeId: req.user.id},
+		where: {topic: req.body.topic, inviteeId: req.user.id, useyn :'Y'},
 		include: [
 			{model: Message, as: 'messages'},
 			{model: Invitee, as: 'invitee', include: [
@@ -288,7 +288,7 @@ router.get('/invitee/chats', auth.needsInviteeLogin, async (req, res) => {
 		order: [
 			[{model: Message, as: 'messages'}, 'id', 'DESC']
 		],
-		where: {inviteeId: req.user.id},
+		where: {inviteeId: req.user.id, useyn :'Y'},
 		include: [
 			{model: Message, as: 'messages'},
 			{model: User, as: 'user'}
@@ -329,10 +329,10 @@ router.get('/chats/:id/messages', auth.needsLogin, async (req, res) => {
 	let chat
 
 	if (req.user.email) {
-		chat = await Chat.findOne({where: {id, userId: req.user.id}})
+		chat = await Chat.findOne({where: {id, userId: req.user.id, useyn :'Y'}})
 	}
 	if (req.user.code) {
-		chat = await Chat.findOne({where: {id, inviteeId: req.user.id}})
+		chat = await Chat.findOne({where: {id, inviteeId: req.user.id, useyn :'Y'}})
 	}
 
 	if (!chat) {
