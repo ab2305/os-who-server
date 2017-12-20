@@ -329,10 +329,10 @@ router.get('/chats/:id/messages', auth.needsLogin, async (req, res) => {
 	let chat
 
 	if (req.user.email) {
-		chat = await Chat.findOne({where: {id, userId: req.user.id, useyn :'Y'}})
+		chat = await Chat.findOne({where: {id, userId: req.user.id}})
 	}
 	if (req.user.code) {
-		chat = await Chat.findOne({where: {id, inviteeId: req.user.id, useyn :'Y'}})
+		chat = await Chat.findOne({where: {id, inviteeId: req.user.id}})
 	}
 
 	if (!chat) {
