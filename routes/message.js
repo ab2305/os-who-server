@@ -184,7 +184,7 @@ router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 	
 	//await chat.update({useyn : 'N'})
 	
-	return res.status(200).end(chat.id)
+	return res.status(200).end(chat.get('id'))
 })
 
 
