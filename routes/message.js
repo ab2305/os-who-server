@@ -182,9 +182,9 @@ router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 		return res.status(404).send('not found chat with topic')
 	}
 	
-	//await chat.update({useyn : 'N'})
+	await chat.update({useyn : 'N'})
 	
-	return res.status(200).end(chat.get('id'))
+	return res.status(200).end('')
 })
 
 
