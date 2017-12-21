@@ -183,6 +183,24 @@ router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 	return res.status(200).end('OK')
 })
 
+router.post('/blocking/',  auth.needsUserLogin, async (req, res, next) => {
+	const chat = await Chat.findOne({
+		where: {id: parseInt(req.body.chartID, 10)}
+	})
+	
+	const inviteeId = chat.inviteeId;
+	const userId = chat.userId;
+	
+	const block = await block_list.findOne({where : {tid:userId, tid:inviteeId}})
+	
+	if (!block) {
+
+		await block.create({tid:userId, tid:inviteeId})
+	} 
+	
+	return res.status(200).end('FAIL')
+})
+
 
 router.get('/block/:id',  auth.needsLogin, async (req, res) => {
 	const chat = await Chat.findOne({
