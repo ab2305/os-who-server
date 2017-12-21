@@ -16,7 +16,7 @@ const User = require('../models').User
 const UserInvitee = require('../models').UserInvitee
 const UsingHistory = require('../models').UsingHistory
 const logger = require('../lib/logger')
-const block_list = require('../models').block_list
+const block_list = require('../models').block
 
 const router = express.Router()
 
@@ -197,6 +197,7 @@ router.get('/blocking/:id',  auth.needsUserLogin, async (req, res, next) => {
 	if (!block) {
 
 		await block.create({tid:userId, tid:inviteeId})
+		return res.status(200).end('OK')
 	} 
 	
 	return res.status(200).end('FAIL')
