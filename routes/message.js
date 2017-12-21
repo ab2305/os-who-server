@@ -16,6 +16,7 @@ const User = require('../models').User
 const UserInvitee = require('../models').UserInvitee
 const UsingHistory = require('../models').UsingHistory
 const logger = require('../lib/logger')
+const block_list = require('../models').block_list
 
 const router = express.Router()
 
