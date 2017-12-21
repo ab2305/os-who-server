@@ -8,7 +8,8 @@ module.exports = (defineModel, defineRelationship, models) => {
 		id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
 		text: {type: Sequelize.STRING(512), allowNull: false},
 		isRead: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false},
-		status : {type : Sequelize.STRING(1), allowNull : false}
+		status : {type : Sequelize.STRING(1), allowNull : false},
+		pretext : {type : Sequelize.STRING(512), allowNull : true}
 	}, {
 
 		instanceMethods: {
