@@ -186,7 +186,7 @@ router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 
 router.post('/blocking/',  auth.needsUserLogin, async (req, res, next) => {
 	const chat = await Chat.findOne({
-		where: {id: parseInt(req.body.chartID, 10)}
+		where: {id: parseInt(req.body.chatId, 10)}
 	})
 	
 	const inviteeId = chat.inviteeId;
