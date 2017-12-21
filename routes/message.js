@@ -178,7 +178,7 @@ router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 		where: {id: parseInt(req.body.id, 10)}
 	})
 	
-	await message.update({status : 'C', text : '신고된 내용입니다.', pretext : req.body.message})
+	await message.update({status : 'C', text : '신고된 내용입니다.', pretext : req.body.text})
 	
 	return res.status(200).end('OK')
 })
