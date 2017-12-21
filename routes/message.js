@@ -184,9 +184,9 @@ router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 	return res.status(200).end('OK')
 })
 
-router.post('/blocking/',  auth.needsUserLogin, async (req, res, next) => {
+router.get('/blocking/:id',  auth.needsUserLogin, async (req, res, next) => {
 	const chat = await Chat.findOne({
-		where: {id: parseInt(req.body.chatId, 10)}
+		where: {id: parseInt(req.params.id, 10), useyn :'Y'}
 	})
 	
 	const inviteeId = chat.inviteeId;
