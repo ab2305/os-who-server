@@ -174,6 +174,22 @@ router.put('/invitees/:id/name', auth.needsUserLogin, async (req, res) => {
 	return res.status(200).end()
 })
 
+router.post('/ReportList',  auth.needsUserLogin, async (req, res, next) => {
+	const where = {}
+	
+	
+	const users = await Message.findAll({
+		where : {status :'C'},
+		order: [['updatedAt', 'desc']],
+		include: [
+			{model: Invitee, as: 'invitee'},
+			{model: User, as: 'user'}
+		]
+	})
+
+	return res.json(users.map(o => o.toRes()))
+})
+
 router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 	const message = await Message.findOne({
 		where: {id: parseInt(req.body.id, 10)}
