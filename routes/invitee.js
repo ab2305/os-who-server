@@ -54,7 +54,7 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 
 		// Coolsms sending message
 		try {
-			await coolsms.send(invitee.phone, ${invitee.name}님 안녕하세요. ${invitee.name}님을 알고 있는 ${req.user.nickname}라는 닉네임을 쓰는 분이 ${invitee.name}님과 1:1 대화를 하고 싶어서 대화방으로 초대를 하였습니다.
+			await coolsms.send(invitee.phone, `${invitee.name}님 안녕하세요. ${invitee.name}님을 알고 있는 ${req.user.nickname}라는 닉네임을 쓰는 분이 ${invitee.name}님과 1:1 대화를 하고 싶어서 대화방으로 초대를 하였습니다.
 익명채팅 앱 '누굴까'를 설치하면 ${req.user.nickname}님과 곧바로 채팅을 할 수 있습니다.
 설치 후 최초 로그인 시 아래의 인증코드를 입력해 주세요.
 인증코드: ${invitee.code}
