@@ -2,9 +2,9 @@
 
 const _ = require('lodash')
 const Sequelize = require('sequelize')
-const randomstring = require('randomstring')
+//const randomstring = require('randomstring')
 
-const generateCode = () => randomstring.generate({length: 4, charset: 'numeric'})
+//const generateCode = () => randomstring.generate({length: 4, charset: 'numeric'})
 
 module.exports = (defineModel, defineRelationship, models) => {
 	defineModel('Invitee', {
@@ -15,7 +15,7 @@ module.exports = (defineModel, defineRelationship, models) => {
 		code: {
 			type: Sequelize.STRING,
 			allowNull: false,
-			defaultValue: generateCode
+			defaultValue: '1234'
 		},
 		logined: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false}
 	}, {

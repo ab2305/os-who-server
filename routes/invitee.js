@@ -19,7 +19,7 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 	let chat
 	if (invitee) {
 		// Exist invitee
-		await invitee.regenerateCode()
+		//await invitee.regenerateCode()
 		let userInvitee = await UserInvitee.findOne({
 			where: {userId: req.user.id, inviteeId: invitee.id}
 		})
@@ -35,7 +35,7 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 
 		await userInvitee.update({invitationCount})
 
-		if (invitationCount >= 10) {
+		if (invitationCount >= 3) {
 			return res.status(400).end()
 		}
 
