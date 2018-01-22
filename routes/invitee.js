@@ -35,7 +35,7 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 
 		await userInvitee.update({invitationCount})
 
-		if (invitationCount >= 3) {
+		if (invitationCount >= 10) {
 			return res.status(400).end()
 		}
 
