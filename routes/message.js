@@ -275,7 +275,7 @@ router.get('/invitee/chats', auth.needsInviteeLogin, async (req, res) => {
 		order: [
 			[{model: Message, as: 'messages'}, 'id', 'DESC']
 		],
-		where: {inviteeId: req.user.id, useyn :'Y'},
+		where: {inviteeId: req.user.id},
 		include: [
 			{model: Message, as: 'messages'},
 			{model: User, as: 'user'}
