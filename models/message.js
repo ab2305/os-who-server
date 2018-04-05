@@ -6,9 +6,9 @@ const Sequelize = require('sequelize')
 module.exports = (defineModel, defineRelationship, models) => {
 	defineModel('Message', {
 		id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
-		text: {type: Sequelize.STRING(512), allowNull: false},
-		isRead: {type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false},
-		status : {type : Sequelize.STRING(1), allowNull : false},
+		text: {type: Sequelize.STRING(512), allowNull: true},
+		isRead: {type: Sequelize.BOOLEAN, allowNull: true, defaultValue: false},
+		status : {type : Sequelize.STRING(1), allowNull : true},
 		pretext : {type : Sequelize.STRING(512), allowNull : true, defaultValue:''}
 	}, {
 
