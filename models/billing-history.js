@@ -41,6 +41,24 @@ module.exports = (defineModel, defineRelationship, models) => {
 					return '구독권 90일권'
 				case billingConfig.subscription180:
 					return '구독권 180일권'
+				case billingConfig.stamp_33:
+					return '33매'
+				case billingConfig.stamp_100:
+					return '105매'
+				case billingConfig.stamp_200:
+					return '220매'
+				case billingConfig.stamp_500:
+					return '600매'
+				case billingConfig.stamp_1000:
+					return '1300매'
+				case billingConfig.stest_30:
+					return '구독권 30일권'
+				case billingConfig.stest_60:
+					return '구독권 60일권'
+				case billingConfig.stest_90:
+					return '구독권 90일권'
+				case billingConfig.stest_180:
+					return '구독권 180일권'
 				default:
 					return null
 			}

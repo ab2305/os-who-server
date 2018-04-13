@@ -107,6 +107,85 @@ router.post('/me/item', auth.needsUserLogin, async (req, res, next) => {
 			updateList.subscriptionStartedAt = subscriptionStartedAt
 			updateList.category = 'subscription'
 			break
+		case billingConfig.stamp_33:
+			tip = 0
+			stamp = myItem.stamp + parseInt(33 * (1 + tip), 10)
+			price = 1000
+			updateList.stamp = stamp
+			updateList.category = 'stamp'
+			break
+		case billingConfig.stamp_100:
+			tip = 0.05
+			stamp = myItem.stamp + parseInt(100 * (1 + tip), 10)
+			price = 3000
+			updateList.stamp = stamp
+			updateList.category = 'stamp'
+			break
+		case billingConfig.stamp_200:
+			tip = 0.1
+			stamp = myItem.stamp + parseInt(200 * (1 + tip), 10)
+			price = 6000
+			updateList.stamp = stamp
+			updateList.category = 'stamp'
+			break
+		case billingConfig.stamp_500:
+			tip = 0.2
+			stamp = myItem.stamp + parseInt(500 * (1 + tip), 10)
+			price = 15000
+			updateList.stamp = stamp
+			updateList.category = 'stamp'
+			break
+		case billingConfig.stamp_1000:
+			tip = 0.3
+			stamp = myItem.stamp + parseInt(1000 * (1 + tip), 10)
+			price = 30000
+			updateList.stamp = stamp
+			updateList.category = 'stamp'
+			break
+		case billingConfig.stest_30:
+			if (_.isNull(subscriptionEndedAt)) {
+				subscriptionStartedAt = moment().format()
+				subscriptionEndedAt = moment().format()
+			}
+			subscriptionEndedAt = moment(subscriptionEndedAt).add(30, 'days').format()
+			price = 9000
+			updateList.subscriptionEndedAt = subscriptionEndedAt
+			updateList.subscriptionStartedAt = subscriptionStartedAt
+			updateList.category = 'subscription'
+			break
+		case billingConfig.stest_60:
+			if (_.isNull(subscriptionEndedAt)) {
+				subscriptionStartedAt = moment().format()
+				subscriptionEndedAt = moment().format()
+			}
+			subscriptionEndedAt = moment(subscriptionEndedAt).add(60, 'days').format()
+			price = 16000
+			updateList.subscriptionEndedAt = subscriptionEndedAt
+			updateList.subscriptionStartedAt = subscriptionStartedAt
+			updateList.category = 'subscription'
+			break
+		case billingConfig.stest_90:
+			if (_.isNull(subscriptionEndedAt)) {
+				subscriptionStartedAt = moment().format()
+				subscriptionEndedAt = moment().format()
+			}
+			subscriptionEndedAt = moment(subscriptionEndedAt).add(90, 'days').format()
+			price = 22000
+			updateList.subscriptionEndedAt = subscriptionEndedAt
+			updateList.subscriptionStartedAt = subscriptionStartedAt
+			updateList.category = 'subscription'
+			break
+		case billingConfig.stest_180:
+			if (_.isNull(subscriptionEndedAt)) {
+				subscriptionStartedAt = moment().format()
+				subscriptionEndedAt = moment().format()
+			}
+			subscriptionEndedAt = moment(subscriptionEndedAt).add(180, 'days').format()
+			price = 39000
+			updateList.subscriptionEndedAt = subscriptionEndedAt
+			updateList.subscriptionStartedAt = subscriptionStartedAt
+			updateList.category = 'subscription'
+			break
 		default:
 			return res.status(400).send('invalid productId')
 	}

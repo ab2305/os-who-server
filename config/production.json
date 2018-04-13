@@ -35,6 +35,15 @@
 		"subscription60": "subscription_60",
 		"subscription90": "subscription_90",
 		"subscription180": "subscription_180"
+		"stamp_33": "stamp.33",
+		"stamp_100": "stamp.100",
+		"stamp_200": "stamp.200",
+		"stamp_500": "stamp.500",
+		"stamp_1000": "stamp.1000",
+		"stest_30 ": "stest_30",
+		"stest_60 ": "stest_60",
+		"stest_90 ": "stest_90",
+		"stest_180 ": "stest_180"
 	},
 	"db": {
 		"host": "localhost",

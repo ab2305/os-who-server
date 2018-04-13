@@ -45,6 +45,33 @@ router.get('/billingHistories', auth.needsAdmin, async (req, res) => {
 			case '구독권 180일권':
 				where.productId = billingConfig.subscription180
 				break
+			case '33매(iOS)':
+				where.productId = billingConfig.stamp_33
+				break
+			case '105매(iOS)':
+				where.productId = billingConfig.stamp_100
+				break
+			case '220매(iOS)':
+				where.productId = billingConfig.stamp_200
+				break
+			case '600매(iOS)':
+				where.productId = billingConfig.stamp_500
+				break
+			case '1300매(iOS)':
+				where.productId = billingConfig.stamp_1000
+				break
+			case '구독권 30일권(iOS)':
+				where.productId = billingConfig.stest_30
+				break
+			case '구독권 60일권(iOS)':
+				where.productId = billingConfig.stest_60
+				break
+			case '구독권 90일권(iOS)':
+				where.productId = billingConfig.stest_90
+				break
+			case '구독권 180일권(iOS)':
+				where.productId = billingConfig.stest_180
+				break
 			default:
 				break
 		}
