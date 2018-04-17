@@ -7,6 +7,7 @@ const auth = require('../middlewares/auth')
 const coolsms = require('../lib/coolsms')
 const mail = require('../lib/mail')
 const User = require('../models').User
+const User_V = require('../models').User_V
 const UserInvitee = require('../models').UserInvitee
 const Item = require('../models').Item
 const BillingHistory = require('../models').BillingHistory
