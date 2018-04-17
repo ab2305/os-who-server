@@ -97,6 +97,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 		order: [['id', 'desc']],
 		include: [
 			{model: Item, as: 'item'},
+			{model: User_V as: 'user_v'},
 			{model: BillingHistory, as: 'billingHistories'},
 			{model: UserInvitee, as: 'userInvitees'},
 			{model: UserInformation, as: 'userInformation'}
