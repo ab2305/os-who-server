@@ -1,6 +1,6 @@
 {
   "development": {
-    "host": "13.114.210.255",
+    "host": "localhost",
     "port": 5432,
     "database": "who",
     "username": null,
@@ -14,7 +14,7 @@
     "dialect": "postgres"
   },
   "production": {
-    "host": "13.114.210.255",
+    "host": "localhost",
     "port": 5432,
     "database": "who",
     "username": null,
@@ -28,7 +28,7 @@
     "dialect": "postgres"
   },
   "test": {
-    "host": "13.114.210.255",
+    "host": "localhost",
     "port": 5432,
     "database": "who",
     "username": null,
