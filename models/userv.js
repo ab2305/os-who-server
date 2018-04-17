@@ -15,7 +15,7 @@ class PasswordError extends Error {
 }
 
 module.exports = (defineModel, defineRelationship, models) => {
-	defineModel('User', {
+	defineModel('User_V', {
 		id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
 		email: {type: Sequelize.STRING, unique: true},
 		password: {type: Sequelize.STRING},
@@ -25,7 +25,8 @@ module.exports = (defineModel, defineRelationship, models) => {
 		birthYear: {type: Sequelize.STRING},
 		phone: {type: Sequelize.STRING, unique: true, allowNull: false},
 		lastLoginedAt: {type: Sequelize.DATE, allowNull: false, defaultValue: new Date()},
-		verified: {type: Sequelize.BOOLEAN, defaultValue: false}
+		verified: {type: Sequelize.BOOLEAN, defaultValue: false},
+		singocnt: {type:Sequelize.INTEGER, defaultValue:0}
 	}, {
 		classMethods: {
 			generatePassword(plainText) {
