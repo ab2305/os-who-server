@@ -46,7 +46,7 @@
 		"stest_180 ": "stest_180"
 	},
 	"db": {
-		"host": "localhost",
+		"host": "13.114.210.255",
 		"port": 5432,
 		"database": "who",
 		"username": "who-api",

@@ -1,10 +1,10 @@
 {
 	"app": {
 		"port": 8020,
-		"host": "http://localhost:8020",
-		"passwordSalt": "saltbae",
-		"sessionSecret": "wooram",
-		"redisPass": "",
+		"host": "http://api.nuguga.kr",
+		"passwordSalt": "chatiichatii",
+		"sessionSecret": "forgodwooram",
+		"redisPass": "godwooramzzang",
 		"redisPort": 6379,
 		"redisHost": "localhost",
 		"uploadDir": "./public/uploads"
