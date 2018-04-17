@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth')
 const coolsms = require('../lib/coolsms')
 const mail = require('../lib/mail')
 const User = require('../models').User
-const User_V = require('../models').User_V
+//const User_V = require('../models').User_V
 const UserInvitee = require('../models').UserInvitee
 const Item = require('../models').Item
 const BillingHistory = require('../models').BillingHistory
@@ -91,7 +91,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 	if (req.query.email) {
 		where.email = {$iLike: `%${req.query.email}%`}
 	}
-	const users = await User_V.findAll({
+	const users = await User.findAll({
 		where,
 		order: [['id', 'desc']],
 		include: [
