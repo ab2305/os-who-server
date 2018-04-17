@@ -89,6 +89,6 @@ module.exports = (defineModel, defineRelationship, models) => {
 		models.User.hasMany(models.BillingHistory, {as: 'billingHistories', foreignKey: {name: 'userId', allowNull: false}, onDelete: 'CASCADE'})
 		models.User.hasMany(models.UsingHistory, {as: 'usingHistories', foreignKey: {name: 'userId', allowNull: false}, onDelete: 'CASCADE'})
 		models.User.hasMany(models.UserInvitee, {as: 'userInvitees', foreignKey: 'userId'})
-		models.User.hasOne(models.User_V, {as: 'user_v', foreignKey:'id'})
+		models.User.hasOne(models.Userv, {as: 'user_v', foreignKey:'id'})
 	})
 }

@@ -15,7 +15,7 @@ class PasswordError extends Error {
 }
 
 module.exports = (defineModel, defineRelationship, models) => {
-	defineModel('User_V', {
+	defineModel('Userv', {
 		id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},		
 		singocnt: {type:Sequelize.INTEGER, defaultValue:0}
 	})
