@@ -90,7 +90,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 	if (req.query.email) {
 		where.email = {$iLike: `%${req.query.email}%`}
 	}
-	const users = await User.findAll({
+	const users = await User_V.findAll({
 		where,
 		order: [['id', 'desc']],
 		include: [
@@ -100,6 +100,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			{model: UserInformation, as: 'userInformation'}
 		]
 	})
+	
 
 	return res.json(users.map(o => o.toRes()))
 })
