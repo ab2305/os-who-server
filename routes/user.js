@@ -101,8 +101,6 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			{model: UserInvitee, as: 'userInvitees'},
 			{model: UserInformation, as: 'userInformation'},
 			{model: Chat, as:'chat', required:false}
-			
-			]}
 		]
 	})
 	
