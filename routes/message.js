@@ -386,7 +386,7 @@ router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 		where: {id:parseInt(req.body.id,10)}
 	})
 	
-	await user.update({scnt : parseInt(scnt)+1})
+	await user.update({scnt : parseInt(user.scnt)+1})
 	
 	return res.status(200).end('OK')
 })
