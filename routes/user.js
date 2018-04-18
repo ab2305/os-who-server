@@ -92,7 +92,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 	if (req.query.email) {
 		where.email = {$iLike: `%${req.query.email}%`}
 	}
-	const users = await User_V.findAll({
+	const users = await User.findAll({
 		where,
 		order: [['id', 'desc']],
 		include: [
