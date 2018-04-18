@@ -101,7 +101,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			{model: UserInvitee, as: 'userInvitees'},
 			{model: UserInformation, as: 'userInformation'},
 			{model: Chat, as: 'chat', include: [
-			       {model:Message, as: 'message', where:{status:'C'}}
+			       {model:Messages, as: 'messages', where:{status:'C'}}
 			]}
 		]
 	})
