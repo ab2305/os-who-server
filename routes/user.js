@@ -85,7 +85,6 @@ router.put('/me/password', auth.needsUserLogin, async (req, res) => {
 })
 
 router.get('/users', auth.needsAdmin, async (req, res) => {
-
 	const where = {}
 	if (req.query.name) {
 		where.name = {$iLike: `%${req.query.name}%`}
@@ -93,31 +92,21 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 	if (req.query.email) {
 		where.email = {$iLike: `%${req.query.email}%`}
 	}
-	const users = await User.findAll({
+	const users = await User_V.findAll({
 		where,
 		order: [['id', 'desc']],
 		include: [
-			{model: Item, as: 'item'},			
+			{model: Item, as: 'item'},
 			{model: BillingHistory, as: 'billingHistories'},
 			{model: UserInvitee, as: 'userInvitees'},
-			{model: UserInformation, as: 'userInformation'}
+			{model: UserInformation, as: 'userInformation'}.
+			{model: Chat, as 'chat', include[{model:Message, as 'message', where:{status='C'}}] }
 		]
 	})
 	
-	const stats = users.map(user => {
-		const json = _.pick(user.toJSON(), ['id'])
-		json.singocnt = _.sum(user.userv.map(use => {
-			
-				return parseInt(use.singocnt, 10)
-			
-		}))
-		
-		return json
-	})
-
 	
 
-	return res.send(_.orderBy(stats, ['id', 'desc']))
+	return res.json(users.map(o => o.toRes()))
 })
 
 router.get('/users/:id', auth.needsAdmin, async (req, res) => {
