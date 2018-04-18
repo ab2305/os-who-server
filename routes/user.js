@@ -102,7 +102,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			{model: UserInformation, as: 'userInformation'}
 			
 		]
-	}).success
+	})
 	
 	
 	return res.json(users.map(o => o.toRes()))
