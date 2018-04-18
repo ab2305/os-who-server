@@ -25,7 +25,8 @@ module.exports = (defineModel, defineRelationship, models) => {
 		birthYear: {type: Sequelize.STRING},
 		phone: {type: Sequelize.STRING, unique: true, allowNull: false},
 		lastLoginedAt: {type: Sequelize.DATE, allowNull: false, defaultValue: new Date()},
-		verified: {type: Sequelize.BOOLEAN, defaultValue: false}
+		verified: {type: Sequelize.BOOLEAN, defaultValue: false},
+		scnt : {type:Sequelize.INTEGER, allowNull:false, defaultValue : 0}
 	}, {
 		classMethods: {
 			generatePassword(plainText) {

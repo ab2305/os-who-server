@@ -382,11 +382,11 @@ router.post('/Report/',  auth.needsUserLogin, async (req, res, next) => {
 	
 	await message.update({status : 'C', text : '신고된 내용입니다.', pretext : req.body.text})
 	
-	const chat = await Chat.findOne({
-		where: {id:parseInt(message.chatId,10)}
+	const user = await User.findOne({
+		where: {id:parseInt(req.body.id,10)}
 	})
 	
-	await chat.update({scnt : parseInt(scnt)+1})
+	await user.update({scnt : parseInt(scnt)+1})
 	
 	return res.status(200).end('OK')
 })

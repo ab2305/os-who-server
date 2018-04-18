@@ -99,10 +99,10 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			{model: Item, as: 'item'},
 			{model: BillingHistory, as: 'billingHistories'},
 			{model: UserInvitee, as: 'userInvitees'},
-			{model: UserInformation, as: 'userInformation'},
-			{model: Chat, as:'chat', required:false}
+			{model: UserInformation, as: 'userInformation'}
+			
 		]
-	})
+	}).success
 	
 	
 	return res.json(users.map(o => o.toRes()))
