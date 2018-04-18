@@ -85,7 +85,7 @@ router.put('/me/password', auth.needsUserLogin, async (req, res) => {
 })
 
 router.get('/users', auth.needsAdmin, async (req, res) => {
-	const where = {}
+	/*const where = {}
 	if (req.query.name) {
 		where.name = {$iLike: `%${req.query.name}%`}
 	}
@@ -104,7 +104,39 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 	})
 	
 
-	return res.json(users.map(o => o.toRes()))
+	return res.json(users.map(o => o.toRes()))*/
+	const where = {}
+	if (req.query.name) {
+		where.name = {$iLike: `%${req.query.name}%`}
+	}
+	if (req.query.email) {
+		where.email = {$iLike: `%${req.query.email}%`}
+	}
+	const users = await User.findAll({
+		where,
+		order: [['id', 'desc']],
+		include: [
+			{model: Item, as: 'item'},			
+			{model: BillingHistory, as: 'billingHistories'},
+			{model: UserInvitee, as: 'userInvitees'},
+			{model: UserInformation, as: 'userInformation'}
+		]
+	})
+	
+	const stats = users.map(user => {
+		const json = _.pick(user.toJSON(), ['id', 'name', 'email', 'phone'])
+		json.singocnt = _.sum(user.userv.map(use => {
+			
+				return parseInt(use.singocnt, 10)
+			
+		}))
+		
+		return json
+	})
+
+	
+
+	return res.send(_.orderBy(stats, ['id', 'desc']))
 })
 
 router.get('/users/:id', auth.needsAdmin, async (req, res) => {
