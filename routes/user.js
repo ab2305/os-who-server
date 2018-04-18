@@ -129,7 +129,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			
 				return parseInt(use.singocnt, 10)
 			
-		}))
+		})
 		
 		return json
 	})
