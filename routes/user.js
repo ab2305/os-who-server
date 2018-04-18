@@ -96,8 +96,7 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 		where,
 		order: [['id', 'desc']],
 		include: [
-			{model: Item, as: 'item'},
-			{model: Userv, as: 'userv'},
+			{model: Item, as: 'item'},	
 			{model: BillingHistory, as: 'billingHistories'},
 			{model: UserInvitee, as: 'userInvitees'},
 			{model: UserInformation, as: 'userInformation'}
