@@ -6,7 +6,8 @@ module.exports = (defineModel, defineRelationship, models) => {
 	defineModel('Chat', {
 		id: {type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true},
 		topic: {type: Sequelize.STRING(512), allowNull: false, unique: true},
-		useyn: {type : Sequelize.STRING(1), allowNull: true, defaultValue: 'Y'}
+		useyn: {type : Sequelize.STRING(1), allowNull: true, defaultValue: 'Y'},
+		scnt: {type : Sequelize.INTEGER, allowNull : true, defaultValue:0}
 	})
 
 	defineRelationship(() => {
