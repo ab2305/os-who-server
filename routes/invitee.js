@@ -54,12 +54,12 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 
 		// Coolsms sending message
 		try {
-			await coolsms.send(invitee.phone, `${invitee.name}님 안녕하세요. ${invitee.name}님을 알고 있는 ${req.user.nickname}라는 닉네임을 쓰는 분이 ${invitee.name}님과 1:1 대화를 하고 싶어서 대화방으로 초대를 하였습니다.
+			await coolsms.send(invitee.phone, `${invitee.name}님의 친구중에서 ${invitee.name}님과 대화를 하고 싶어하는 분이 있습니다. 닉네임이 ${req.user.nickname}님이며 ${invitee.name}님과 대화를 하고 싶어서 대화방으로 초대를 하였습니다.
 익명채팅 앱 '누굴까'를 설치하면 ${req.user.nickname}님과 곧바로 채팅을 할 수 있습니다.
 설치 후 최초 로그인 시 아래의 인증코드를 입력해 주세요.
-인증코드: ${invitee.code}
+초대코드: ${invitee.code}
 
-'누굴까'는 ‘초대한 사람은 상대방을 알지만 상대방은 초대한 사람을 모르는 채 서로 대화하는 익명 채팅 메신저' 입니다.
+'누굴까'는 ‘내가 아는 사람과 익명으로 채팅하는 메신저' 입니다. 마켓에서 '누굴까'로 검색하여 직접 설치하거나 아래의 링크를 누르면 마켓으로 이동할 수 있습니다.(스팸이나 피싱이 아니니 안심하셔도 됩니다)
 http://admin.nuguga.kr/app/app
 `, 'LMS')
 		} catch (err) {
@@ -89,12 +89,12 @@ http://admin.nuguga.kr/app/app
 
 		// Coolsms sending message
 		try {
-			await coolsms.send(invitee.phone, `${invitee.name}님 안녕하세요. ${invitee.name}님을 알고 있는 ${req.user.nickname}라는 닉네임을 쓰는 분이 ${invitee.name}님과 1:1 대화를 하고 싶어서 대화방으로 초대를 하였습니다.
+			await coolsms.send(invitee.phone, `${invitee.name}님의 친구중에서 ${invitee.name}님과 대화를 하고 싶어하는 분이 있습니다. 닉네임이 ${req.user.nickname}님이며 ${invitee.name}님과 대화를 하고 싶어서 대화방으로 초대를 하였습니다.
 익명채팅 앱 '누굴까'를 설치하면 ${req.user.nickname}님과 곧바로 채팅을 할 수 있습니다.
 설치 후 최초 로그인 시 아래의 인증코드를 입력해 주세요.
-인증코드: ${invitee.code}
+초대코드: ${invitee.code}
 
-'누굴까'는 ‘초대한 사람은 상대방을 알지만 상대방은 초대한 사람을 모르는 채 서로 대화하는 익명 채팅 메신저' 입니다.
+'누굴까'는 ‘내가 아는 사람과 익명으로 채팅하는 메신저' 입니다. 마켓에서 '누굴까'로 검색하여 직접 설치하거나 아래의 링크를 누르면 마켓으로 이동할 수 있습니다.(스팸이나 피싱이 아니니 안심하셔도 됩니다)
 http://admin.nuguga.kr/app/app
 `, 'LMS')
 		} catch (err) {
