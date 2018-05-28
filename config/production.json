@@ -23,7 +23,7 @@
 		"level": "info"
 	},
 	"fcm": {
-		"serverKey": "AAAAjUSSdJY:APA91bHXQ-u3p5psopsgMztSLe9ONVzVwCkVo9GJpJ8FMMjTjudIOqi9tx9WsaVcbZ24pYrGYXDYGKtbZUtu1pfnmc1XjTvnW5cJiCuEb0b-cLMmUmqC1dse74uwyhOFNYXP-CjoTb_s"
+		"serverKey": "AAAA458ILT4:APA91bEnl4y8HOMy3mJQ3j6R5zqYstRTpFOx-s9IkQtTv-V9WeLV-Io361ms9hRO44TWLfxmeHcVmjbEqlD67FSbz84mcZ5dpwe9mfghI0nVOZIdbzIf1M1AS-D6S7OtJXv92yUX85SK"
 	},
 	"billing": {
 		"stamp33": "stamp_33",
