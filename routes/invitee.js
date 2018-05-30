@@ -35,9 +35,9 @@ router.post('/invitee', auth.needsUserLogin, async (req, res, next) => {
 
 		await userInvitee.update({invitationCount})
 
-		if (invitationCount >= 3) {
-			return res.status(400).end()
-		}
+		//if (invitationCount >= 3) {
+		//	return res.status(400).end()
+		//}
 
 		chat = await Chat.findOne({where: {
 			userId: req.user.id,
