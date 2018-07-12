@@ -2,6 +2,7 @@
 
 const _ = require('lodash')
 const express = require('express')
+const moment = require('moment')
 const randomstring = require('randomstring')
 const auth = require('../middlewares/auth')
 const coolsms = require('../lib/coolsms')
@@ -84,17 +85,48 @@ router.put('/me/password', auth.needsUserLogin, async (req, res) => {
 	return res.status(200).end()
 })
 
-router.get('/users', auth.needsAdmin, async (req, res) => {
+router.get('/users', auth.needsUserLogin, async (req, res) => {
+	const limit = parseInt(req.query.limit, 10) || 1000;
+	const offset = (limit * (parseInt(req.query.page, 10) - 1)) || 0;
 	const where = {}
+	if (_.has(req.query, 'signupFrom') && _.has(req.query, 'signupTo')) {
+		where.createdAt = {$gte: moment(req.query.signupFrom).toDate(), $lte: moment(req.query.signupTo).toDate()};
+	}
+
+	if (_.has(req.query, 'birthYearFrom') && _.has(req.query, 'birthYearTo')) {
+		where.birthYear = {$gte: req.query.birthYearFrom, $lte: req.query.birthYearTo};
+	}
+
+	if (_.has(req.query, 'sex')) {
+		where.sex = req.query.sex;
+	}
+
+	if (_.has(req.query, 'status')) {
+		// where.sex = req.query.sex;
+	}
+
+	if (_.has(req.query, 'name')) {
+		where.name = req.query.name
+	}
+	if (_.has(req.query, 'phone')) {
+		where.phone = req.query.phone.replace(/-/g, '')
+	}
+	if (_.has(req.query, 'email')) {
+		where.email = req.query.email
+	}
+
+	let users;
 	if (req.query.name) {
 		where.name = {$iLike: `%${req.query.name}%`}
 	}
 	if (req.query.email) {
 		where.email = {$iLike: `%${req.query.email}%`}
 	}
-	const users = await User.findAll({
+	users = await User.findAll({
 		where,
 		order: [['id', 'desc']],
+		limit,
+		offset,		
 		include: [
 			{model: Item, as: 'item'},
 			{model: BillingHistory, as: 'billingHistories'},
@@ -103,8 +135,12 @@ router.get('/users', auth.needsAdmin, async (req, res) => {
 			
 		]
 	})
-	
-	
+
+	if (req.query.length) {
+		users = await User.findAll({where})
+		return res.json({length: users.length})
+	}
+
 	return res.json(users.map(o => o.toRes()))
 })
 

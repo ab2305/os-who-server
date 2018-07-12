@@ -2,6 +2,7 @@
 
 const _ = require('lodash')
 const express = require('express')
+const moment = require('moment')
 const auth = require('../middlewares/auth')
 const connection = require('../models').connection
 const User = require('../models').User
@@ -32,9 +33,41 @@ router.post('/seceder', auth.needsUserLogin, async (req, res, next) => {
 	return res.status(201).json({id: seceder.id})
 })
 
-router.get('/seceders', auth.needsAdmin, async (req, res) => {
+router.get('/seceders', auth.needsUserLogin, async (req, res) => {
+	const limit = parseInt(req.query.limit, 10) || 1000;
+	const offset = (limit * (parseInt(req.query.page, 10) - 1)) || 0;
+	const where = {}
+	if (_.has(req.query, 'signupFrom') && _.has(req.query, 'signupTo')) {
+		where.createdAt = {$gte: moment(req.query.signupFrom).toDate(), $lte: moment(req.query.signupTo).toDate()}
+	}
+
+	if (_.has(req.query, 'birthYearFrom') && _.has(req.query, 'birthYearTo')) {
+		where.birthYear = {$gte: req.query.birthYearFrom, $lte: req.query.birthYearTo}
+	}
+
+	if (_.has(req.query, 'sex')) {
+		where.sex = req.query.sex;
+	}
+
+	if (_.has(req.query, 'status')) {
+		// where.sex = req.query.sex;
+	}
+
+	if (_.has(req.query, 'name')) {
+		userWhere.name = req.query.name
+	}
+	if (_.has(req.query, 'phone')) {
+		userWhere.phone = req.query.phone.replace(/-/g, '')
+	}
+	if (_.has(req.query, 'email')) {
+		userWhere.email = req.query.email
+	}	
+
 	const seceders = await Seceder.findAll({
-		order: [['id', 'desc']]
+		where,
+		order: [['id', 'desc']],
+		limit,
+		offset,
 	})
 
 	return res.json(seceders.map(o => o.toJSON()))
