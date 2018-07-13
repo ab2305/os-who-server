@@ -15,7 +15,7 @@ router.post('/seceder', auth.needsUserLogin, async (req, res, next) => {
 
 	const t = await connection.transaction()
 	// Transaction starting
-	req.body.userCreatedAt = req.user.createdAt
+	req.user.userCreatedAt = req.user.createdAt
 	try {
 		const pickList = ['email', 'name', 'nickname', 'gender', 'birthYear', 'phone', 'verified', 'userCreatedAt']
 
